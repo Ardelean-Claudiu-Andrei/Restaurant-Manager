@@ -1,0 +1,82 @@
+.site-footer {
+  background: #fff;
+  border-top: 1px solid var(--border, #e5e7eb);
+  color: var(--text, #1f2937);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 20px;
+  padding: 22px 0;
+}
+
+.footer-info {
+  min-width: 0;
+}
+
+.footer-brand {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.footer-line {
+  margin: 6px 0 10px;
+  color: var(--muted, #6b7280);
+}
+
+.footer-label {
+  font-weight: 600;
+  color: var(--text, #1f2937);
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  margin: 6px 0;
+}
+
+.contact-list a {
+  color: var(--primary, #2563eb);
+  text-decoration: none;
+}
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+/* Map */
+.footer-map {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border, #e5e7eb);
+  box-shadow: 0 10px 25px rgba(2, 6, 23, 0.06);
+  min-height: 260px;
+}
+.footer-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  border: 0;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  border-top: 1px solid var(--border, #e5e7eb);
+  text-align: center;
+  color: var(--muted, #6b7280);
+  padding: 12px 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-map iframe {
+    min-height: 220px;
+  }
+}

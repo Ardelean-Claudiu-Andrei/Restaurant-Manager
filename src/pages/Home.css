@@ -1,0 +1,428 @@
+/* ======= HERO ======= */
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background-color: #111;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  overflow: clip;
+  isolation: isolate;
+
+  /* mai compact: */
+  min-height: clamp(160px, 22vw, 300px);
+
+  /* fade subtil jos */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 92%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 92%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* overlay-ul tău (culoarea vine inline) */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+}
+.hero__overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+      120% 70% at 50% -10%,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0) 70%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.2) 65%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+}
+
+/* Titlu */
+.hero__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-inline: clamp(16px, 4vw, 32px);
+
+  /* mai puțin padding pe laptop */
+  padding-top: clamp(18px, 4vw, 40px);
+  padding-bottom: clamp(20px, 6vw, 56px);
+
+  font-size: clamp(26px, 4.8vw, 44px);
+  line-height: 1.05;
+  font-weight: 800;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25), 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* opțional: forțezi oricând compact cu clasa .hero--compact */
+.hero--compact {
+  min-height: 200px !important;
+}
+
+/* meta row din card – preț + buton */
+.card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.price {
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: 0.2px;
+}
+
+/* buton generic + ghost */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #111827;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn:hover {
+  filter: brightness(1.05);
+}
+
+.btn--ghost {
+  background: #fff;
+  color: #111827;
+  border-color: #d1d5db;
+}
+.btn--ghost:hover {
+  background: #f3f4f6;
+}
+
+/* ===== Modal simplu (opțional) ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  width: min(680px, 100%);
+  max-height: 90vh;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.modal__media img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.modal__body {
+  padding: 16px 18px;
+}
+.modal__body h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+}
+.modal__body p {
+  margin: 0;
+  color: #4b5563;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* ============ Butoane ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #111827;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn:hover {
+  filter: brightness(1.05);
+}
+.btn--ghost {
+  background: #fff;
+  color: #111827;
+  border-color: #d1d5db;
+}
+.btn--ghost:hover {
+  background: #f3f4f6;
+}
+
+.price {
+  font-weight: 800;
+  color: #111827;
+}
+
+/* ============ Modal ============ */
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  z-index: 1000;
+  animation: modalFade 0.12s ease-out both;
+}
+
+/* Card desktop */
+.modal {
+  background: #fff;
+  width: min(680px, 100%);
+  max-height: 90dvh;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  transform: translateY(6px);
+  animation: modalUp 0.16s ease-out both;
+  overscroll-behavior: contain;
+}
+
+.modal__media img {
+  width: 100%;
+  height: clamp(180px, 38dvh, 260px); /* mai mic pe mobil */
+  object-fit: cover;
+  display: block;
+}
+
+.modal__body {
+  padding: 16px 18px;
+  overflow: auto; /* conținutul poate derula separat */
+}
+
+.modal__title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.modal__desc {
+  margin: 0;
+  color: #4b5563;
+}
+.modal__footerRow {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal__price {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px 16px;
+  border-top: 1px solid #f1f5f9;
+  background: #fff;
+}
+
+/* Close button */
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+/* ===== Bottom sheet pe mobil ===== */
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 0;
+    place-items: end center;
+  } /* lipește jos */
+  .modal {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 92dvh; /* ține loc spectrului de bare browser */
+    border-radius: 16px 16px 0 0; /* sheet */
+    animation: sheetIn 0.2s ease-out both;
+  }
+  .modal-actions {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+  .modal__close {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+/* Animații */
+@keyframes modalFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modalUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes sheetIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ===== Desktop: modal mai mic și fără spațiu gol ===== */
+@media (min-width: 768px) {
+  .modal {
+    width: min(520px, 70vw); /* era 680px – acum mai compact */
+    max-height: 72dvh; /* puțin mai scund */
+    grid-template-rows: auto auto auto; /* NU mai întinde corpul cu 1fr */
+    overflow: hidden; /* marginile rămân curate */
+  }
+  .modal__media img {
+    height: 200px; /* imagine mai mică */
+  }
+  .modal__body {
+    padding: 14px 16px;
+    overflow: auto; /* dacă descrierea e lungă, doar corpul derulează */
+    max-height: calc(72dvh - 200px - 56px); /* ~200 img + ~56 acțiuni */
+  }
+}
+
+/* ===========Chip================= */
+
+/* Wrapper-ul secțiunii de chips */
+.chips {
+  margin-block: 1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0; /* IMPORTANT: previne overflow în flex/grid parents */
+}
+
+/* Baza pentru grup */
+.chip-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  min-width: 0;
+}
+
+/* Mobil: scroll orizontal */
+.chip-group--scroll {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.chip-group--scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ≥768px: wrap pe mai multe rânduri, fără scroll */
+@media (min-width: 768px) {
+  .chip-group--scroll {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+/* Butonul chip – „rezistent” în layout îngust */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.7rem; /* puțin mai mic ca să încapă mai multe */
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  font-size: clamp(
+    12px,
+    3.4vw,
+    14px
+  ); /* micșorează automat pe ecrane înguste */
+  line-height: 1.1;
+  cursor: pointer;
+  user-select: none;
+
+  flex: 0 0 auto; /* nu se întind */
+  white-space: nowrap; /* nu rup textul pe două rânduri */
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.chip--active {
+  background: #c92a2a; /* sau ce culoare vrei */
+  color: #fff;
+  border-color: #c92a2a;
+}
+
+/* Extra strâns pe ecrane foarte mici */
+@media (max-width: 360px) {
+  .chip {
+    padding: 0.3rem 0.55rem;
+    font-size: 12px;
+  }
+}
